@@ -1,0 +1,66 @@
+/*Estilos de carrusel de inicio*/
+
+
+#carrusel-contenido {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+#carrusel-caja {
+    display: flex;
+    width: 100%;
+    animation: deslizar 18s infinite;
+}
+
+.carrusel-elemento {
+    flex: 1 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgcarrusel {
+    width: 100%;
+    height: auto;
+    max-height: 90vh;
+    object-fit: cover;
+}
+
+/* Animación de carrusel */
+@keyframes deslizar {
+    0% {
+        transform: translateX(0%);
+    }
+
+    25% {
+        transform: translateX(0%);
+    }
+
+    30% {
+        transform: translateX(-100%);
+    }
+
+    55% {
+        transform: translateX(-100%);
+    }
+
+    60% {
+        transform: translateX(-200%);
+    }
+
+    85% {
+        transform: translateX(-200%);
+    }
+
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .imgcarrusel {
+        max-height: 300px;
+    }
+}
