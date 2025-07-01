@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+/*import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { CatalogoComponent } from './pages/catalogo/catalogo.component';
 import { CarritoComponent } from './pages/carrito/carrito.component';
@@ -11,4 +11,35 @@ export const routes: Routes = [
   { path: 'carrito', component: CarritoComponent },
   { path: 'registro', component: RegistroComponent },
   { path: 'login', component: LoginComponent },
+];*/
+
+import { Routes } from '@angular/router';
+
+export const routes: Routes = [
+  {
+    path: '',
+    loadComponent: () =>
+      import('./pages/home/home.component').then(m => m.HomeComponent)
+  },
+  {
+    path: 'catalogo',
+    loadComponent: () =>
+      import('./pages/catalogo/catalogo.component').then(m => m.CatalogoComponent)
+  },
+  {
+    path: 'carrito',
+    loadComponent: () =>
+      import('./pages/carrito/carrito.component').then(m => m.CarritoComponent)
+  },
+  {
+    path: 'registro',
+    loadComponent: () =>
+      import('./pages/registro/registro.component').then(m => m.RegistroComponent)
+  },
+  {
+    path: 'login',
+    loadComponent: () =>
+      import('./pages/login/login.component').then(m => m.LoginComponent)
+  }
 ];
+
