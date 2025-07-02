@@ -1,11 +1,56 @@
-<div class="catalogo-container">
-  <h2>Colección disponible</h2>
-  <div class="grid">
-    <div class="card" *ngFor="let producto of productos">
-      <img [src]="producto.imagen" alt="Producto" />
-      <h3>{{ producto.nombre }}</h3>
-      <p class="precio">${{ producto.precio }}</p>
-      <button>Agregar al carrito</button>
+<div *ngIf="!seccionSeleccionada" class="catalogo-entrada">
+  <div class="opciones">
+    <div class="opcion" (click)="mostrarSeccion('mujeres')" (mouseenter)="hover = 'mujeres'" (mouseleave)="hover = null"
+      [class.opaca]="hover === 'hombres'">
+      <!--<img src="assets/img/catalogo-mujeres.jpg" alt="Mujeres">-->
+      <img src="https://via.placeholder.com/300x400?text=Mujeres" />
+      <h2>Mujeres</h2>
     </div>
+
+    <div class="opcion" (click)="mostrarSeccion('hombres')" (mouseenter)="hover = 'hombres'" (mouseleave)="hover = null"
+      [class.opaca]="hover === 'mujeres'">
+      <!-- <img src="assets/img/catalogo-hombres.jpg" alt="Hombres">-->
+      <img src="https://via.placeholder.com/300x400?text=Hombres" />
+
+      <h2>Hombres</h2>
+    </div>
+  </div>
+</div>
+
+<!-- Sección Mujeres -->
+<div *ngIf="seccionSeleccionada === 'mujeres'" class="catalogo">
+  <h2>Colección CRC - Mujeres</h2>
+  <button class="volver" (click)="volver()">← Volver</button>
+  <div class="grid">
+    <div class="producto" *ngFor="let producto of productosMujer" (click)="abrirDetalle(producto)">
+      <img [src]="producto.imagen" [alt]="producto.nombre">
+      <h3>{{ producto.nombre }}</h3>
+      <span class="precio">{{ producto.precio | currency:'COP' }}</span>
+    </div>
+  </div>
+</div>
+
+<!-- Sección Hombres -->
+<div *ngIf="seccionSeleccionada === 'hombres'" class="catalogo">
+  <h2>Colección CRC - Hombres</h2>
+  <button class="volver" (click)="volver()">← Volver</button>
+  <div class="grid">
+    <div class="producto" *ngFor="let producto of productosHombre" (click)="abrirDetalle(producto)">
+      <img [src]="producto.imagen" [alt]="producto.nombre">
+      <h3>{{ producto.nombre }}</h3>
+      <span class="precio">{{ producto.precio | currency:'COP' }}</span>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Detalle -->
+<div class="modal" *ngIf="productoSeleccionado">
+  <div class="modal-contenido">
+    <span class="cerrar" (click)="cerrarDetalle()">×</span>
+    <img [src]="productoSeleccionado.imagen" alt="Producto">
+    <h3>{{ productoSeleccionado.nombre }}</h3>
+    <p>{{ productoSeleccionado.descripcion }}</p>
+    <p class="precio">{{ productoSeleccionado.precio | currency:'COP' }}</p>
+    <button (click)="agregarAlCarrito(productoSeleccionado)">Agregar al carrito</button>
   </div>
 </div>

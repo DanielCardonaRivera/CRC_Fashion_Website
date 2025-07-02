@@ -1,60 +1,186 @@
-.catalogo-container {
+.catalogo-entrada {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 2rem;
+}
+
+.opciones {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.opcion {
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
   text-align: center;
 }
 
-h2 {
+.opcion img {
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.opcion h2 {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  color: #222;
+}
+
+.opaca {
+  opacity: 0.4;
+}
+
+.volver {
+  background-color: #eee;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+
+
+.catalogo {
+  padding: 2rem;
+  background-color: #f5f5f5;
+  text-align: center;
+}
+
+.catalogo h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
+  font-weight: bold;
   color: #333;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: 1fr; /* Móviles por defecto */
   gap: 1.5rem;
 }
 
-.card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  padding: 1rem;
-  transition: transform 0.2s ease-in-out;
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas ≥768px */
+}
 }
 
-.card:hover {
+.producto {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.producto:hover {
   transform: translateY(-5px);
 }
 
-.card img {
+.producto img {
   width: 100%;
-  border-radius: 12px;
+  height: 200px;
   object-fit: cover;
-  height: 160px;
-}
-
-.card h3 {
-  font-size: 1.1rem;
-  margin: 0.5rem 0;
-}
-
-.card .precio {
-  color: #0a9396;
-  font-weight: bold;
+  border-radius: 0.5rem;
   margin-bottom: 0.75rem;
 }
 
-.card button {
-  background-color: #0a9396;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 0.2s;
+.producto h3 {
+  font-size: 1.1rem;
+  color: #222;
+  margin: 0.5rem 0;
 }
 
-.card button:hover {
-  background-color: #007f7f;
+.producto p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.precio {
+  display: block;
+  margin: 0.5rem 0;
+  font-weight: bold;
+  color: #e91e63;
+}
+
+button {
+  background-color: #222;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #444;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-contenido {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+  animation: aparecer 0.3s ease-in-out;
+}
+
+.modal-contenido img {
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.modal-contenido h3 {
+  margin-top: 0;
+}
+
+.modal-contenido p {
+  margin: 0.5rem 0;
+}
+
+.cerrar {
+  position: absolute;
+  top: 1rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #444;
+}
+
+@keyframes aparecer {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.catalogo h2 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #222;
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 0.5rem;
 }
