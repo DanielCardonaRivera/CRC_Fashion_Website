@@ -16,8 +16,8 @@ footer {
 
 .footer-container h2,
 .footer-container h3 {
-  font-family: 'Playfair Display', serif;
-  color: #ffb6c1;
+  font-family: 'Roboto', sans-serif;
+  color: #ffffff;
   margin-bottom: 0.5rem;
 }
 
@@ -38,7 +38,7 @@ footer {
 }
 
 .footer-social li a:hover {
-  color: #ffb6c1;
+  color: #ffffff;
 }
 
 .footer-bottom {
