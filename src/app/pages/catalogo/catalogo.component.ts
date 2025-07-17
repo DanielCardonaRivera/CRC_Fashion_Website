@@ -20,7 +20,7 @@ export class CatalogoComponent {
   // Guarda el producto que el usuario seleccionó para ver su detalle
   productoSeleccionado: any = null;
 
-  // Lista de productos para mujeres (simulada con datos de ejemplo)
+  // Lista de productos para  mujeres (simulada con datos de ejemplo)
   productosMujer = Array.from({ length: 15 }, (_, i) => ({
     nombre: `Producto Mujer ${i + 1}`,
     descripcion: 'Estilo femenino exclusivo y moderno.',
