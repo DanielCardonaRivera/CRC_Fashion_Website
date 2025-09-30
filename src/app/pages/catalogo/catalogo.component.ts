@@ -21,20 +21,20 @@ export class CatalogoComponent {
   productoSeleccionado: any = null;
 
   // Lista de productos para  mujeres (simulada con datos de ejemplo)
-  productosMujer = Array.from({ length: 15 }, (_, i) => ({
+  productosMujer = Array.from({ length: 5 }, (_, i) => ({
     nombre: `Producto Mujer ${i + 1}`,
     descripcion: 'Estilo femenino exclusivo y moderno.',
-    imagen: `assets/img/mujer${(i % 6) + 1}.jpg`, // Usa imágenes numeradas del 1 al 6
+    imagen: `assets/img/mujer${(i % 5) + 1}.jpg`, // Usa imágenes numeradas del 1 al 5
     precio: 80000 + i * 2000
   }));
 
-  // Lista de productos para hombres (también simulada)
+  /* Lista de productos para hombres (también simulada)
   productosHombre = Array.from({ length: 15 }, (_, i) => ({
     nombre: `Producto Hombre ${i + 1}`,
     descripcion: 'Moda masculina elegante y cómoda.',
     imagen: `assets/img/hombre${(i % 6) + 1}.jpg`,
     precio: 75000 + i * 2500
-  }));
+  }));*/
 
   // Esta función cambia la sección que se está mostrando (hombres o mujeres)
   mostrarSeccion(seccion: 'hombres' | 'mujeres') {
