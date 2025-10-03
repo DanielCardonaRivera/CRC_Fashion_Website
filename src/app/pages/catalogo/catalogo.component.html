@@ -3,54 +3,36 @@
     <div class="opcion" (click)="mostrarSeccion('mujeres')" (mouseenter)="hover = 'mujeres'" (mouseleave)="hover = null"
       [class.opaca]="hover === 'hombres'">
       <img src="assets/img/mujer.jpg" alt="Mujeres">
-      <!--img src="https://via.placeholder.com/300x400?text=Mujeres" /-->
+      <img src="https://via.placeholder.com/300x400?text=Mujeres" />
       <h2>Mujeres</h2>
     </div>
 
-    <!--div class="opcion" (click)="mostrarSeccion('hombres')" (mouseenter)="hover = 'hombres'" (mouseleave)="hover = null"
+    <div class="opcion" (click)="mostrarSeccion('hombres')" (mouseenter)="hover = 'hombres'" (mouseleave)="hover = null"
       [class.opaca]="hover === 'mujeres'">
       <img src="assets/img/hombre.jpg" alt="Hombres">
-      <img src="https://via.placeholder.com/300x400?text=Hombres" />
-
+        <img src="  https://via.placeholder.com/300x400?text=Hombres" />
       <h2>Hombres</h2>
-    </div>-->
+    </div>        
   </div>
 </div>
 
-<!-- Sección Mujeres -->
+<!--Sección Mujeres -->
 <div *ngIf="seccionSeleccionada === 'mujeres'" class="catalogo">
   <h2>Para ellas</h2>
-  <button class="volver" (click)="volver()">← Volver</button>
-  
-  <!-- Elimina o comenta este bloque para quitar las tarjetas anteriores -->
-  <!--
-  <div class="grid">
-    <div class="producto" *ngFor="let producto of productosMujer" (click)="abrirDetalle(producto)">
-      <img [src]="producto.imagen" [alt]="producto.nombre">
-      <h3>{{ producto.nombre }}</h3>
-      <span class="precio">{{ producto.precio | currency:'COP' }}</span>
-    </div>
-  </div>
-  -->
-
-  <!-- Mantén solo las tarjetas organizadas en grid -->
   <div class="tarjetas-grid">
     <div *ngFor="let producto of productosMujer; let i = index" 
         class="tarjeta" 
-         [ngClass]="{'central': i === 2, 'arriba': i === 0 || i === 1, 'abajo': i === 3 || i === 4}">
+        [ngClass]="{'central': i === 2, 'arriba': i === 0 || i === 1, 'abajo': i === 3 || i === 4}">
       <img [src]="producto.imagen" alt="{{producto.nombre}}">
       <h3>{{producto.nombre}}</h3>
-      <p>{{producto.descripcion}}</p>
       <span>{{producto.precio | currency:'COP'}}</span>
       <button (click)="abrirDetalle(producto)">Ver detalle</button>
     </div>
   </div>
 </div>
 
-<!-- Sección Hombres 
 <div *ngIf="seccionSeleccionada === 'hombres'" class="catalogo">
   <h2>Colección CRC - Hombres</h2>
-  <button class="volver" (click)="volver()">← Volver</button>
   <div class="grid">
     <div class="producto" *ngFor="let producto of productosHombre" (click)="abrirDetalle(producto)">
       <img [src]="producto.imagen" [alt]="producto.nombre">
@@ -58,7 +40,7 @@
       <span class="precio">{{ producto.precio | currency:'COP' }}</span>
     </div>
   </div>
-</div>-->
+</div>
 
 <!-- Modal de Detalle -->
 <div class="modal" *ngIf="productoSeleccionado">

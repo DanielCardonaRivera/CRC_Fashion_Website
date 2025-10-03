@@ -14,27 +14,48 @@ export class CatalogoComponent {
   // Variable para saber en qué producto está el mouse (hover)
   hover: string | null = null;
 
-  // Esta variable indica si el usuario está viendo la sección de hombres o de mujeres
-  seccionSeleccionada: 'hombres' | 'mujeres' | null = null;
+  // Muestra directamente la sección de mujeres (puedes cambiar a 'hombres' si prefieres)
+  seccionSeleccionada: 'hombres' | 'mujeres' | null = 'mujeres';
 
   // Guarda el producto que el usuario seleccionó para ver su detalle
   productoSeleccionado: any = null;
 
   // Lista de productos para  mujeres (simulada con datos de ejemplo)
-  productosMujer = Array.from({ length: 5 }, (_, i) => ({
-    nombre: `Producto Mujer ${i + 1}`,
-    descripcion: 'Estilo femenino exclusivo y moderno.',
-    imagen: `assets/img/mujer${(i % 5) + 1}.jpg`, // Usa imágenes numeradas del 1 al 5
-    precio: 80000 + i * 2000
-  }));
+  productosMujer = [
+    {
+      nombre: 'Abrigo Aurora',
+      imagen: 'assets/img/mujer1.jpg',
+      precio: 120000
+    },
+    {
+      nombre: 'Abrigo Luna Rosa',
+      imagen: 'assets/img/mujer2.jpg',
+      precio: 115000
+    },
+    {
+      nombre: 'Abrigo Niebla',
+      imagen: 'assets/img/mujer3.jpg',
+      precio: 110000
+    },
+    {
+      nombre: 'Abrigo Esencia',
+      imagen: 'assets/img/mujer4.jpg',
+      precio: 125000
+    },
+    {
+      nombre: 'Abrigo Viento Floral',
+      imagen: 'assets/img/mujer5.jpg',
+      precio: 118000
+    }
+  ];
 
-  /* Lista de productos para hombres (también simulada)
+  // Lista de productos para hombres (también simulada)
   productosHombre = Array.from({ length: 15 }, (_, i) => ({
     nombre: `Producto Hombre ${i + 1}`,
     descripcion: 'Moda masculina elegante y cómoda.',
     imagen: `assets/img/hombre${(i % 6) + 1}.jpg`,
     precio: 75000 + i * 2500
-  }));*/
+  }));
 
   // Esta función cambia la sección que se está mostrando (hombres o mujeres)
   mostrarSeccion(seccion: 'hombres' | 'mujeres') {
@@ -55,7 +76,7 @@ export class CatalogoComponent {
   // Cierra el detalle del producto
   cerrarDetalle() {
     this.productoSeleccionado = null;
-  }
+  } 
 
   // Simula agregar un producto al carrito mostrando una alerta
   agregarAlCarrito(producto: any) {

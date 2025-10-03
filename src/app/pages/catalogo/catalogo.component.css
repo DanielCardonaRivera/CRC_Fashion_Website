@@ -49,7 +49,7 @@
 
 
 .catalogo {
-  padding: 2rem;
+  padding: 0.2rem 0.2rem; /* Reduce aún más el espacio lateral */
   background-color: #f5f5f5;
   text-align: center;
 }
@@ -63,14 +63,20 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr; /* Móviles por defecto */
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  /* Móviles por defecto */
+  gap: 6px;              /* Menos espacio entre tarjetas */
+  max-width: 100vw;      /* Ocupa todo el ancho de la ventana */
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
   .grid {
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas en pantallas ≥768px */
-}
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;            /* Menos espacio entre tarjetas en desktop */
+  }
 }
 
 .producto {
@@ -79,6 +85,7 @@
   border-radius: 0.75rem;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
+  font-family: 'MaaxRounded', 'ui-rounded', sans-serif;
   transition: transform 0.3s;
 }
 
@@ -109,7 +116,7 @@
   display: block;
   margin: 0.5rem 0;
   font-weight: bold;
-  color: #e91e63;
+  color: #000000;
 }
 
 button {
@@ -117,7 +124,7 @@ button {
   color: #fff;
   border: none;
   padding: 0.6rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.1rem;
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -125,6 +132,7 @@ button {
 button:hover {
   background-color: #444;
 }
+
 .modal {
   position: fixed;
   top: 0;
@@ -173,9 +181,17 @@ button:hover {
 }
 
 @keyframes aparecer {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
+
 .catalogo h2 {
   margin-top: 2.5rem;
   margin-bottom: 1rem;
@@ -190,44 +206,131 @@ button:hover {
   grid-template-areas:
     "arriba1 central arriba2"
     "abajo1 central abajo2";
-  grid-template-columns: 1fr 1.7fr 1fr;
+  grid-template-columns: 1fr 1.5fr 1fr;   /* Todas las columnas igual de anchas */
   grid-template-rows: 1fr 1fr;
-  gap: 24px;
-  justify-items: center;
-  align-items: stretch; /* Permite que las tarjetas ocupen toda la altura de la celda */
-  margin: 40px auto;
-  max-width: 1100px;
+  gap: 16px;                            /* Espacio entre tarjetas */
+  max-width: 1200px;                    /* Centrado y ancho fijo */
+  margin: 16px auto;
+  padding: 0;
+  width: 100%;
+  justify-items: stretch;                /* Las tarjetas ocupan todo el ancho de la celda */
+  align-items: stretch;
 }
 
 .tarjeta {
   background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  padding: 18px;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 8px;
   text-align: center;
   transition: box-shadow 0.2s;
-  width: 220px;
-  height: 340px;
+  width: 100%;
+  min-height: 600px;           /* Altura base para tarjetas normales */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .tarjeta.arriba {
-  align-self: start; /* Alinea arriba */
+  align-self: start;
+  /* Alinea arriba */
 }
 
 .tarjeta.abajo {
-  align-self: end;   /* Alinea abajo */
+  align-self: end;
+  /* Alinea abajo */
 }
 
 .tarjeta.central {
   grid-area: central;
-  width: 340px;
-  height: 420px;
+  width: 100%;
+  min-height: 1220px;          /* El doble de alta que las demás */
   z-index: 2;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-  border: 2px solid #e91e63;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  border: 1px solid #888;
   font-size: 1.15em;
-  align-self: center; /* Centra verticalmente */
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.tarjeta img {
+  width: 100%;
+  height: 400px;               /* Proporción vertical para normales */
+  object-fit: cover;
+  border-radius: 2px;
+  margin-bottom: 8px;
+  display: block;
+  aspect-ratio: 3 / 4;
+}
+
+.tarjeta.central img {
+  width: 100%;
+  height: 800px;               /* Imagen más alta en la central */
+  object-fit: cover;
+  border-radius: 2px;
+  margin-bottom: 12px;
+  aspect-ratio: 3 / 4;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media (max-width: 900px) {
+  .tarjetas-grid {
+    grid-template-areas:
+      "central"
+      "arriba1"
+      "arriba2"
+      "abajo1"
+      "abajo2";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 12px;
+  }
+  .tarjeta,
+  .tarjeta.central {
+    min-height: 400px;
+  }
+  .tarjeta img,
+  .tarjeta.central img {
+    height: 250px;
+  }
+}
+
+@media (max-width: 600px) {
+  .tarjeta,
+  .tarjeta.central {
+    min-height: 300px;
+    padding: 4px;
+  }
+  .tarjeta img,
+  .tarjeta.central img {
+    height: 160px;
+  }
+}
+
+.catalogo,
+.catalogo h2,
+.grid,
+.producto,
+.producto h3,
+.producto p,
+.precio,
+.tarjetas-grid,
+.tarjeta,
+.tarjeta h3,
+.tarjeta p,
+.tarjeta span,
+.tarjeta button,
+.modal-contenido,
+.modal-contenido h3,
+.modal-contenido p,
+.volver {
+  font-family: 'MaaxRounded', 'ui-rounded', sans-serif;
 }
