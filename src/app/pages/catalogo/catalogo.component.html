@@ -23,7 +23,7 @@
     <div *ngFor="let producto of productosMujer; let i = index" 
         class="tarjeta" 
         [ngClass]="{'central': i === 2, 'arriba': i === 0 || i === 1, 'abajo': i === 3 || i === 4}">
-      <img [src]="producto.imagen" alt="{{producto.nombre}}">
+      <img [src]="producto.imagen" alt="{{producto.nombre}}" (click)="abrirDetalle(producto)">
       <h3>{{producto.nombre}}</h3>
       <span>{{producto.precio | currency:'COP'}}</span>
       <button (click)="abrirDetalle(producto)">Ver detalle</button>
